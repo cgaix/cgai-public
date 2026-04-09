@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": [ "6479258909.ai.capitalgain.app1" ],
+        "components": [
+          {
+            "/": "/app*",
+            "comment": "Matches anything starting with /app"
+          }
+        ]
+      }
+    ]
+  }
+}

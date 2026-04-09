@@ -1,1 +1,14 @@
-
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "ai.capitalgain.app",
+      "sha256_cert_fingerprints": [
+        "9E:50:A0:73:38:6F:F9:E0:61:84:5C:B9:0C:4A:37:C4:DA:1B:D5:4E:4F:A3:6B:0B:EB:81:E8:27:24:4D:5A:2A"
+      ]
+    }
+  }
+]

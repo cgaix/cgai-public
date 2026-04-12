@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0; url=https://play.google.com/store/apps/details?id=ai.capitalgain.app" />
-    <script type="text/javascript">
-        window.location.href = "https://play.google.com/store/apps/details?id=ai.capitalgain.app"
-    </script>
     <title>Redirecting...</title>
+    <script type="text/javascript">
+        (function() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            var isApple = /iPad|iPhone|iPod|Macintosh/.test(userAgent);
+            
+            // Special check for newer iPads that pretend to be Macs
+            if (navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /Macintosh/.test(userAgent)) {
+                isApple = true;
+            }
+
+            var isAndroid = /Android/.test(userAgent);
+
+            // DESTINATIONS
+            var appleStore = "https://apps.apple.com/us/app/id6479258909";
+            var googleStore = "https://play.google.com/store/apps/details?id=ai.capitalgain.app";
+            var fallbackWeb = "https://capitalgain.ai";
+
+            if (isApple) {
+                window.location.href = appleStore;
+            } else if (isAndroid) {
+                window.location.href = googleStore;
+            } else {
+                // For non-mobile (Windows/Linux), send to website or Play Store
+                window.location.href = googleStore; 
+            }
+        })();
+    </script>
 </head>
 <body>
-    If you are not redirected, <a href="https://play.google.com/store/apps/details?id=ai.capitalgain.app">click here</a>.
+    <p>Redirecting to the appropriate store...</p>
 </body>
 </html>

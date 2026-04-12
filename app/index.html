@@ -4,33 +4,30 @@
     <title>Redirecting...</title>
     <script type="text/javascript">
         (function() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            var isApple = /iPad|iPhone|iPod|Macintosh/.test(userAgent);
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
             
-            // Special check for newer iPads that pretend to be Macs
-            if (navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /Macintosh/.test(userAgent)) {
-                isApple = true;
-            }
-
-            var isAndroid = /Android/.test(userAgent);
-
-            // DESTINATIONS
+            // Destinations
             var appleStore = "https://apps.apple.com/us/app/id6479258909";
             var googleStore = "https://play.google.com/store/apps/details?id=ai.capitalgain.app";
-            var fallbackWeb = "https://capitalgain.ai";
 
-            if (isApple) {
-                window.location.href = appleStore;
-            } else if (isAndroid) {
-                window.location.href = googleStore;
+            // 1. Explicit iOS Check (iPhone, iPad, iPod)
+            var isIOS = /iPhone|iPad|iPod/.test(ua);
+            
+            // 2. Modern iPad/Mac Check
+            var isMac = /Macintosh/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+            if (isIOS || isMac) {
+                window.location.replace(appleStore);
+            } else if (/Android/.test(ua)) {
+                window.location.replace(googleStore);
             } else {
-                // For non-mobile (Windows/Linux), send to website or Play Store
-                window.location.href = appleStore; 
+                // Default fallback for Windows/Other
+                window.location.replace(googleStore);
             }
         })();
     </script>
 </head>
 <body>
-    <p>Redirecting to the appropriate store...</p>
+    <p>Redirecting...</p>
 </body>
 </html>
